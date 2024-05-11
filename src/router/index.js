@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
 import { useAuthStore, useAlertStore } from '@/stores';
 import { Home } from '@/views';
 import accountRoutes from './account.routes';

@@ -1,8 +1,7 @@
 <script setup>
 import { Form, Field } from 'vee-validate';
+import { useAuthStore } from '../../stores/auth.store';
 import * as Yup from 'yup';
-
-import { useAuthStore } from '@/stores';
 
 const schema = Yup.object().shape({
     username: Yup.string().required('Username is required'),
@@ -23,12 +22,14 @@ async function onSubmit(values) {
             <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
                 <div class="form-group">
                     <label>Username</label>
-                    <Field name="username" type="text" class="form-control" :class="{ 'is-invalid': errors.username }" />
+                    <Field name="username" type="text" class="form-control"
+                        :class="{ 'is-invalid': errors.username }" />
                     <div class="invalid-feedback">{{ errors.username }}</div>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <Field name="password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
+                    <Field name="password" type="password" class="form-control"
+                        :class="{ 'is-invalid': errors.password }" />
                     <div class="invalid-feedback">{{ errors.password }}</div>
                 </div>
                 <div class="form-group">
